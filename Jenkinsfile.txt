@@ -1,24 +1,17 @@
 pipeline {
-    agent any
-	tools {
-		nodejs '18.6.0'
+    agent {
+		docker {
+			image 'node:16-alpine' 
+            args '-p 3002:3002'
+			}
 	}
     stages {
         stage('Build') {
             steps {
     
-				bat 'npm install'
+				bat 'node --version'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing The Project..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying The Project....'
-            }
-        }
+       
     }
 }
