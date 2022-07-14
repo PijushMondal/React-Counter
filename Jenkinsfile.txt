@@ -8,6 +8,7 @@ pipeline {
             steps {
     
 				bat 'npm install'
+				bat 'tar czf counter.tar.gz node_modules index.js package.json public'
             }
         }
         stage('Test') {
